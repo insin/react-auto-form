@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>react-auto-form</title>
+  <script src="http://fb.me/react-0.12.2.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+  <script src="../dist/react-auto-form.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    max-width: 800px;
+    padding: 1em 10px;
+    margin: 0 auto;
+  }
+  code {
+    font-size: 130%;
+  }
+  footer {
+    text-align: center;
+  }
+  hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #222;
+  }
+  p:first-child {
+    margin-top: 0;
+  }
+  .form-field {
+    margin-bottom: .66em;
+  }
+  .block {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+  }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/jsx;harmony=true">void function() { 'use strict';
+
+var App = React.createClass({
+  getInitialState() {
+    return {
+      lastOnChange: null,
+      lastOnSubmit: null,
+      trim: true
+    }
+  },
+
+  _onChange(e, name, data, change) {
+    this.setState({lastOnChange: {name, data, change}})
+  },
+
+  _onSubmit(e, data) {
+    this.setState({lastOnSubmit: {data}})
+    e.preventDefault()
+  },
+
+  _toggleTrim(e) {
+    this.setState({trim: e.target.checked})
+  },
+
+  render() {
+    var {lastOnChange, lastOnSubmit, trim} = this.state
+    return <div className="App">
+      <h1>React <a href="https://github.com/insin/react-auto-form"><code>AutoForm</code></a> component</h1>
+      <hr/>
+      <p>Ensure your regular form inputs have <code>name</code> attributes.</p>
+      <p>Wrap your form inputs in an <code>&lt;AutoForm&gt;</code> instead of a regular <code>&lt;form&gt;</code>, passing any of the other usual form attributes you need.</p>
+      <p>Give <code>&lt;AutoForm&gt;</code> <code>onChange</code> and/or <code>onSubmit</code> callback props and it will automatically handle getting user input for you.</p>
+      <p>To control trimming of text input, pass a boolean <code>trim</code> prop.</p>
+      <hr/>
+      <h2>Demo form</h2>
+      <div className="block">
+        <AutoForm onSubmit={this._onSubmit} onChange={this._onChange} trim={trim}>
+          <div className="form-field">
+            <label htmlFor="product">Product:</label><br/>
+            <select name="product" id="product" defaultValue="1">
+              <option value="1">T-shirt</option>
+              <option value="2">Hat</option>
+              <option value="3">Shoes</option>
+            </select>
+          </div>
+         <div className="form-field">
+            <label htmlFor="colours">Colours:</label><br/>
+            <select name="colours" id="colours" multiple size="3" defaultValue={['G']}>
+              <option value="R">Red</option>
+              <option value="G">Green</option>
+              <option value="B">Blue</option>
+            </select>
+          </div>
+          <div className="form-field">
+            <label htmlFor="quantity">Quantity:</label><br/>
+            <input type="number" name="quantity" id="quantity" min="0" step="1" defaultValue="9"/>
+          </div>
+          <div className="form-field">
+            <label>Sizes:</label><br/>
+            <label><input type="checkbox" name="sizes" value="S"/> Small</label><br/>
+            <label><input type="checkbox" name="sizes" value="M" defaultChecked/> Medium</label><br/>
+            <label><input type="checkbox" name="sizes" value="L" defaultChecked/> Large</label><br/>
+          </div>
+          <div className="form-field">
+            <label>Shipping type:</label><br/>
+            <label><input type="radio" name="shipping" value="express" defaultChecked/> Express</label><br/>
+            <label><input type="radio" name="shipping" value="regular"/> Regular</label>
+          </div>
+          <div className="form-field">
+            <label htmlFor="username">Username:</label><br/>
+            <input type="text" name="username" id="username" defaultValue=" AzureDiamond"/>
+          </div>
+          <div className="form-field">
+            <label htmlFor="password">Password:</label><br/>
+            <input type="password" name="password" id="password" defaultValue="hunter2 "/>
+          </div>
+          <div className="form-field">
+            <label>Security message:</label><br/>
+            <textarea name="message"> Hello </textarea>
+          </div>
+          <div className="form-field">
+            <label>
+              <input type="checkbox" name="tos" value="Y" defaultChecked/> I have read and agree to the <a href="#">Terms of Service</a>
+            </label>
+          </div>
+          <button>Submit</button>
+        </AutoForm>
+      </div>
+      <div className="block">
+        <p><label><input type="checkbox" checked={trim} onChange={this._toggleTrim}/> Trim text input</label></p>
+        <p>Last <code>onChange</code> arguments:</p>
+        <pre><code>{lastOnChange ? JSON.stringify(lastOnChange, null, 2) : ' '}</code></pre>
+        <p>Last <code>onSubmit</code> arguments:</p>
+        <pre><code>{lastOnSubmit ? JSON.stringify(lastOnSubmit, null, 2) : ' '}</code></pre>
+      </div>
+      <hr/>
+      <footer><a href="https://github.com/insin/react-auto-form">Source on GitHub</a></footer>
+    </div>
+  }
+})
+
+React.render(<App/>, document.getElementById('app'))
+
+}()</script>
+</body>
