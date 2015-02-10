@@ -1,5 +1,5 @@
 /*!
- * react-auto-form 1.0.0 - https://github.com/insin/react-auto-form
+ * react-auto-form 1.1.0 - https://github.com/insin/react-auto-form
  * MIT Licensed
  */
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var o;"undefined"!=typeof window?o=window:"undefined"!=typeof global?o=global:"undefined"!=typeof self&&(o=self),o.AutoForm=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
@@ -15,25 +15,27 @@ var AutoForm = React.createClass({displayName: "AutoForm",
   propTypes: {
     onChange: React.PropTypes.func,
     onSubmit: React.PropTypes.func,
-    trim: React.PropTypes.bool
+    trim: React.PropTypes.bool,
+    trimOnSubmit: React.PropTypes.bool
   },
 
   getDefaultProps:function() {
     return {
       trim: false
+    , trimOnSubmit: false
     }
   },
 
   _onChange:function(e) {
     var $__0=   e.target,form=$__0.form,name=$__0.name
-    var data = getElementData(form, name, this.props)
+    var data = getElementData(form, name, {trim: this.props.trim})
     var change = {}
     change[name] = data
     this.props.onChange(e, name, data, change)
   },
 
   _onSubmit:function(e) {
-    var data = getFormData(e.target, this.props)
+    var data = getFormData(e.target, {trim: this.props.trimOnSubmit || this.props.trim})
     this.props.onSubmit(e, data)
   },
 
