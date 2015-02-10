@@ -27,8 +27,9 @@ You can find it in the [/dist directory](https://github.com/insin/react-auto-for
 
 ## Usage
 
-The following React component shows all the custom props accepted by `AutoForm`
-and the argument signatures it expects event callbacks to have:
+The following React component skeleton shows usage of `AutoForm` to handle
+getting input `onChange` and `onSubmit`, plus the argument signatures it expects
+event callbacks to have:
 
 ```html
 var ExampleForm = React.createClass({
@@ -41,7 +42,7 @@ var ExampleForm = React.createClass({
   },
 
   render() {
-    return <AutoForm onSubmit={this._onSubmit} onChange={this._onChange} trim>
+    return <AutoForm onChange={this._onChange} onSubmit={this._onSubmit} trimOnSubmit>
       {/* ...form inputs... */}
     </AutoForm>
   }
