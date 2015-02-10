@@ -47,7 +47,8 @@ var App = React.createClass({
     return {
       lastOnChange: null,
       lastOnSubmit: null,
-      trim: true
+      trim: true,
+      trimOnSubmit: false
     }
   },
 
@@ -64,19 +65,27 @@ var App = React.createClass({
     this.setState({trim: e.target.checked})
   },
 
+  _toggleTrimOnSubmit(e) {
+    this.setState({trimOnSubmit: e.target.checked})
+  },
+
   render() {
-    var {lastOnChange, lastOnSubmit, trim} = this.state
+    var {lastOnChange, lastOnSubmit, trim, trimOnSubmit} = this.state
     return <div className="App">
-      <h1>React <a href="https://github.com/insin/react-auto-form"><code>AutoForm</code></a> component</h1>
+      <h1><a href="https://github.com/insin/react-auto-form"><code>AutoForm</code></a></h1>
+      <p><strong>A <a href="(http://facebook.github.io/react/">React</a> component which simplifies getting user input from forms <code>onChange</code> and <code>onSubmit</code></strong></p>
       <hr/>
-      <p>Ensure your form inputs have <code>name</code> attributes.</p>
-      <p>Wrap your form inputs in an <code>&lt;AutoForm&gt;</code> instead of a <code>&lt;form&gt;</code>, passing any of the other usual form attributes you need.</p>
-      <p>Give <code>&lt;AutoForm&gt;</code> <code>onChange</code> and/or <code>onSubmit</code> callback props and it will automatically handle getting user input for you.</p>
-      <p>To control trimming of text input, pass a boolean <code>trim</code> prop.</p>
+      <p>How to use <code>AutoForm</code>:</p>
+      <ul>
+        <li>Ensure your form inputs have <code>name</code> attributes.</li>
+        <li>Wrap your form inputs in an <code>AutoForm</code> component instead of a <code>form</code>, using any of the usual form attributes you need.</li>
+        <li>Pass <code>AutoForm</code> <code>onChange</code> and/or <code>onSubmit</code> callback functions as props and it will handle getting user input for you.</li>
+        <li>To trim text input values, give <code>AutoForm</code> a boolean <code>trim</code> or <code>trimOnSubmit</code> prop.</li>
+      </ul>
       <hr/>
       <h2>Demo form</h2>
       <div className="block">
-        <AutoForm onSubmit={this._onSubmit} onChange={this._onChange} trim={trim}>
+        <AutoForm onSubmit={this._onSubmit} onChange={this._onChange} trim={trim} trimOnSubmit={trimOnSubmit}>
           <div className="form-field">
             <label htmlFor="product">Product:</label><br/>
             <select name="product" id="product" defaultValue="1">
@@ -129,7 +138,8 @@ var App = React.createClass({
         </AutoForm>
       </div>
       <div className="block">
-        <p><label><input type="checkbox" checked={trim} onChange={this._toggleTrim}/> Trim text input</label></p>
+        <p><label><input type="checkbox" checked={trim} onChange={this._toggleTrim}/> Always trim text input</label></p>
+        <p><label><input type="checkbox" checked={trimOnSubmit} onChange={this._toggleTrimOnSubmit}/> Trim text input <code>onSubmit</code></label></p>
         <p>Last <code>onChange</code> arguments:</p>
         <pre><code>{lastOnChange ? JSON.stringify(lastOnChange, null, 2) : ' '}</code></pre>
         <p>Last <code>onSubmit</code> arguments:</p>

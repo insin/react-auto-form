@@ -122,14 +122,22 @@ arguments:
    The properties of this object will be as documented for the get-form-data
    module's [`getFormData()` return value](https://github.com/insin/get-form-data#return-type-objectstring-stringarraystring).
 
-##### `trim: Boolean`
+##### `trimOnSubmit: Boolean` (default: `false`)
 
 If `true`, user input from text inputs will be trimmed of leading and trailing
-whitespace when it is being extracted.
+whitespace only when it is being extracted after an `onSubmit` event.
 
-**Note:** It's not advisable to use this option in conjunction with `onChange`
-and controlled input components, as the user will be completely disallowed from
-entering a leading or trailing space, so they won't be able to enter information
-containing spaces without copying and pasting it.
+##### `trim: Boolean` (default: `false`)
+
+If `true`, user input from text inputs will always be trimmed of leading and
+trailing whitespace when it is being extracted.
+
+When `true`, this prop takes precedence over `trimOnSubmit`.
+
+**Note:** It's not advisable to use the `trim` prop in conjunction with
+`onChange` and controlled input components, as the user will be completely
+disallowed from entering a leading or trailing space, so they won't be able to
+enter information containing spaces without copying and pasting it. Just use
+`trimOnSubmit` instead in this case.
 
 ## MIT Licensed
