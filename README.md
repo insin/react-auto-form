@@ -75,6 +75,12 @@ JavaScript runs on the client.
 
 #### `AutoForm` props
 
+You can pass all the usual form attributes to `AutoForm` (`action`, `method`,
+`encType`, `noValidate` etc.), and they will be passed on to the `<form>` it
+renders for you.
+
+The following props are treated specially:
+
 ##### `onChange: Function(event, name, data, change)`
 
 If this prop is given, AutoForm will configure the form with an `onChange`
@@ -120,5 +126,10 @@ arguments:
 
 If `true`, user input from text inputs will be trimmed of leading and trailing
 whitespace when it is being extracted.
+
+**Note:** It's not advisable to use this option in conjunction with `onChange`
+and controlled input components, as the user will be completely disallowed from
+entering a leading or trailing space, so they won't be able to enter information
+containing spaces without copying and pasting it.
 
 ## MIT Licensed
