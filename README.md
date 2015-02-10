@@ -75,7 +75,7 @@ JavaScript runs on the client.
 
 #### `AutoForm` props
 
-`onChange: Function(event, name, data, change)`
+##### `onChange: Function(event, name, data, change)`
 
 If this prop is given, AutoForm will configure the form with an `onChange`
 handler which will handle `onChange` events from any inputs contained within
@@ -102,7 +102,7 @@ call the given `onChange` function with the following arguments:
    [controlled form components](http://facebook.github.io/react/docs/forms.html#controlled-components)
    and need to call `setState()` on every change.
 
-`onSubmit: Function(event, data)`
+##### `onSubmit: Function(event, data)`
 
 If this prop is given, `AutoForm` will configure the form with an `onSubmit`
 handler which will handle the form's `onSubmit` event, extract submittable data
@@ -116,7 +116,7 @@ arguments:
    The properties of this object will be as documented for the get-form-data
    module's [`getFormData()` return value](https://github.com/insin/get-form-data#return-type-objectstring-stringarraystring).
 
-`trim: Boolean`
+##### `trim: Boolean`
 
 If `true`, user input from text inputs will be trimmed of leading and trailing
 whitespace when it is being extracted.
