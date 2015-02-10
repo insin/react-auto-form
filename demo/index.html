@@ -61,12 +61,8 @@ var App = React.createClass({
     e.preventDefault()
   },
 
-  _toggleTrim(e) {
-    this.setState({trim: e.target.checked})
-  },
-
-  _toggleTrimOnSubmit(e) {
-    this.setState({trimOnSubmit: e.target.checked})
+  _onOptionsChange(e, name, data, change) {
+    this.setState(change)
   },
 
   render() {
@@ -85,7 +81,7 @@ var App = React.createClass({
       <hr/>
       <h2>Demo form</h2>
       <div className="block">
-        <AutoForm onSubmit={this._onSubmit} onChange={this._onChange} trim={trim} trimOnSubmit={trimOnSubmit}>
+        <AutoForm onSubmit={this._onSubmit} onChange={this._onChange} trim={!!trim} trimOnSubmit={!!trimOnSubmit}>
           <div className="form-field">
             <label htmlFor="product">Product:</label><br/>
             <select name="product" id="product" defaultValue="1">
@@ -138,8 +134,10 @@ var App = React.createClass({
         </AutoForm>
       </div>
       <div className="block">
-        <p><label><input type="checkbox" checked={trim} onChange={this._toggleTrim}/> Always trim text input</label></p>
-        <p><label><input type="checkbox" checked={trimOnSubmit} onChange={this._toggleTrimOnSubmit}/> Trim text input <code>onSubmit</code></label></p>
+        <AutoForm onChange={this._onOptionsChange}>
+          <p><label><input type="checkbox" name="trim" checked={!!trim}/> Always trim text input</label></p>
+          <p><label><input type="checkbox" name="trimOnSubmit" checked={!!trimOnSubmit}/> Trim text input <code>onSubmit</code></label></p>
+        </AutoForm>
         <p>Last <code>onChange</code> arguments:</p>
         <pre><code>{lastOnChange ? JSON.stringify(lastOnChange, null, 2) : ' '}</code></pre>
         <p>Last <code>onSubmit</code> arguments:</p>
