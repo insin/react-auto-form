@@ -82,7 +82,7 @@ handler which will handle `onChange` events from any inputs contained within
 the form, extract data for the form element which triggered the event and
 call the given `onChange` function with the following arguments:
 
-1. `event` - the event being handled.
+1. `event: `[`SyntheticEvent`](http://facebook.github.io/react/docs/events.html#syntheticevent) - the event being handled.
 
 2. `name: String` - the name of the form element which was the target of the event.
 
@@ -109,7 +109,7 @@ handler which will handle the form's `onSubmit` event, extract submittable data
 for the form's elements and call the given `onChange` function with the following
 arguments:
 
-1. `event` - the event being handled.
+1. `event: `[`SyntheticEvent`](http://facebook.github.io/react/docs/events.html#syntheticevent) - the event being handled.
 
 2. `data: Object<String, (String|Array.<String>)>` - submittable data for the form.
 
