@@ -84,9 +84,9 @@ call the given `onChange` function with the following arguments:
 
 1. `event` - the event being handled.
 
-2. `name` - the name of the form element which was the target of the event.
+2. `name: String` - the name of the form element which was the target of the event.
 
-3. `data` - submittable data for the form element which changed.
+3. `data: (null|String|Array.<String>)` - submittable data for the form element which changed.
 
    This value will be as documented for the get-form-data module's
    [`getNamedFormElementData()` return value](https://github.com/insin/get-form-data#return-type-nullstringarraystring).
@@ -97,19 +97,21 @@ call the given `onChange` function with the following arguments:
    * `data` for any other type of input which doesn't have a submittable value
      will be `null`.
 
-4. `change` - an Object containing `{[name]: data}`, for convenience if you're
-   using controlled form inputs and need to call `setState()` on every change.
+4. `change: Object<String, (null|String|Array.<String>)>` - an object containing
+   `{[name]: data}`, for convenience if you're using
+   [controlled form components](http://facebook.github.io/react/docs/forms.html#controlled-components)
+   and need to call `setState()` on every change.
 
 `onSubmit: Function(event, data)`
 
-If this prop is given, AutoForm will configure the form with an `onSubmit`
+If this prop is given, `AutoForm` will configure the form with an `onSubmit`
 handler which will handle the form's `onSubmit` event, extract submittable data
 for the form's elements and call the given `onChange` function with the following
 arguments:
 
 1. `event` - the event being handled.
 
-2. `data` - submittable data for the form.
+2. `data: Object<String, (String|Array.<String>)>` - submittable data for the form.
 
    The properties of this object will be as documented for the get-form-data
    module's [`getFormData()` return value](https://github.com/insin/get-form-data#return-type-objectstring-stringarraystring).
