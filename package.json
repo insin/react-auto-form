@@ -1,7 +1,7 @@
 {
   "name": "react-auto-form",
-  "description": "A React component which simplifies getting user input from forms onChange and onSubmit",
-  "version": "1.1.0",
+  "description": "A React component which simplifies getting user input from forms via nChange and onSubmit",
+  "version": "1.2.0",
   "main": "./lib/index.js",
   "standalone": "AutoForm",
   "homepage": "https://github.com/insin/react-auto-form",
@@ -15,7 +15,7 @@
     "forms"
   ],
   "dependencies": {
-    "get-form-data": "^1.1.0"
+    "get-form-data": "^1.2.0"
   },
   "peerDependencies": {
     "react": ">=0.12.0"

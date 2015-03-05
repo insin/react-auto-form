@@ -1,8 +1,8 @@
 ## React `<AutoForm>`
 
 An `<AutoForm>` [React](http://facebook.github.io/react/) component, which
-handles getting data from its contained form inputs `onChange` events and/or
-the form's `onSubmit` event, optionally trimming text input.
+simplifies getting data from its contained form inputs via their `onChange`
+events and the form's `onSubmit` event, optionally trimming text input.
 
 ## [Live Demo](http://insin.github.io/react-auto-form/)
 
@@ -74,6 +74,9 @@ submission - this makes it suitable for use in isomorphic apps which configure
 a form for regular submission and progressively enhance form-handling when
 JavaScript runs on the client.
 
+Where available, data extracted from file inputs will be native
+[`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) objects.
+
 #### `AutoForm` props
 
 You can pass all the usual form attributes to `AutoForm` (`action`, `method`,
@@ -93,7 +96,7 @@ call the given `onChange` function with the following arguments:
 
 2. `name: String` - the name of the form element which was the target of the event.
 
-3. `data: (null|String|Array.<String>)` - submittable data for the form element which changed.
+3. `data: (null|String|Array.<String>|File|Array.<File>)` - submittable data for the form element which changed.
 
    This value will be as documented for the get-form-data module's
    [`getNamedFormElementData()` return value](https://github.com/insin/get-form-data#return-type-nullstringarraystring).
@@ -104,7 +107,7 @@ call the given `onChange` function with the following arguments:
    * `data` for any other type of input which doesn't have a submittable value
      will be `null`.
 
-4. `change: Object<String, (null|String|Array.<String>)>` - an object containing
+4. `change: Object<String, (null|String|Array.<String>|File|Array.<File>)>` - an object containing
    `{[name]: data}`, for convenience if you're using
    [controlled form components](http://facebook.github.io/react/docs/forms.html#controlled-components)
    and need to call `setState()` on every change.

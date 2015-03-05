@@ -42,6 +42,14 @@
 <div id="app"></div>
 <script type="text/jsx;harmony=true">void function() { 'use strict';
 
+if ('File' in window) {
+  File.prototype.toJSON = function() {
+    debugger
+    var {lastModifiedDate, name} = this
+    return {lastModifiedDate, name}
+  }
+}
+
 var App = React.createClass({
   getInitialState() {
     return {
@@ -124,6 +132,14 @@ var App = React.createClass({
           <div className="form-field">
             <label>Security message:</label><br/>
             <textarea name="message"> Hello </textarea>
+          </div>
+          <div className="form-field">
+            <label>A cat picture:</label><br/>
+            <input type="file" name="catpic"/>
+          </div>
+          <div className="form-field">
+            <label>Many cat pictures:</label><br/>
+            <input type="file" multiple name="catpics"/>
           </div>
           <div className="form-field">
             <label>
