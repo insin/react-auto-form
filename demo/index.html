@@ -44,7 +44,6 @@
 
 if ('File' in window) {
   File.prototype.toJSON = function() {
-    debugger
     var {name, size, type} = this
     return {name, size, type}
   }
