@@ -45,8 +45,8 @@
 if ('File' in window) {
   File.prototype.toJSON = function() {
     debugger
-    var {lastModifiedDate, name} = this
-    return {lastModifiedDate, name}
+    var {name, size, type} = this
+    return {name, size, type}
   }
 }
 
