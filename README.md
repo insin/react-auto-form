@@ -106,6 +106,10 @@ call the given `onChange` function with the following arguments:
    * `data` for an empty text input will be an empty string (`''`).
    * `data` for any other type of input which doesn't have a submittable value
      will be `null`.
+   * `data` for an `<input type="file">` will be a
+     [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) if the
+     browser supports the File API. If the input has a `multiple` attribute,
+     `data` will be a list of Files when any are selected.
 
 4. `change: Object<String, (null|String|Array.<String>|File|Array.<File>)>` - an object containing
    `{[name]: data}`, for convenience if you're using
@@ -121,7 +125,7 @@ arguments:
 
 1. `event: `[`SyntheticEvent`](http://facebook.github.io/react/docs/events.html#syntheticevent) - the event being handled.
 
-2. `data: Object<String, (String|Array.<String>)>` - submittable data for the form.
+2. `data: Object<String, (String|Array.<String>|File|Array.<File>)>` - submittable data for the form.
 
    The properties of this object will be as documented for the get-form-data
    module's [`getFormData()` return value](https://github.com/insin/get-form-data#return-type-objectstring-stringarraystring).
