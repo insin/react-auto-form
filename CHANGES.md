@@ -1,3 +1,5 @@
+# 1.2.2 / 2015-05-01
+
 Updated to get-form-data v1.2.2 - ignore inputs with no name or id.
 
 # 1.2.1 / 2015-03-05
