@@ -2,8 +2,10 @@
 <head>
   <meta charset="UTF-8">
   <title>react-auto-form</title>
-  <script src="http://fb.me/react-0.13.2.js"></script>
-  <script src="http://fb.me/JSXTransformer-0.13.2.js"></script>
+  <script src="http://fb.me/react-0.14.0.js"></script>
+  <script src="http://fb.me/react-dom-0.14.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser-polyfill.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
   <script src="../dist/react-auto-form.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
   <style>
@@ -40,7 +42,7 @@
 </head>
 <body>
 <div id="app"></div>
-<script type="text/jsx;harmony=true">void function() { 'use strict';
+<script type="text/babel">void function() { 'use strict';
 
 if ('File' in window) {
   File.prototype.toJSON = function() {
@@ -164,7 +166,7 @@ var App = React.createClass({
   }
 })
 
-React.render(<App/>, document.getElementById('app'))
+ReactDOM.render(<App/>, document.getElementById('app'))
 
 }()</script>
 </body>
