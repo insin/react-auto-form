@@ -1,51 +1,85 @@
 {
   "name": "react-auto-form",
-  "description": "A React component which simplifies getting user input from forms via nChange and onSubmit",
+  "description": "Simplifies getting user input from basic forms via onChange and onSubmit events",
   "version": "1.2.2",
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
   "standalone": "AutoForm",
   "homepage": "https://github.com/insin/react-auto-form",
   "license": "MIT",
   "author": "Jonny Buchanan <jonathan.buchanan@gmail.com>",
-  "keywords": [
-    "react",
-    "react-component",
-    "auto",
-    "form",
-    "forms"
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "build:demo": "webpack --config=webpack.demo.config.js",
+    "build:umd": "webpack && webpack --config=webpack.prod.config.js",
+    "clean": "rimraf lib dist",
+    "clean:demo": "rimraf demo/dist",
+    "demo": "heatpack demo/src/app.js",
+    "dist": "npm run lint && npm run clean && npm run build && npm run build:umd && npm run dist:demo",
+    "dist:demo": "npm run lint:demo && npm run clean:demo && npm run build:demo",
+    "lint": "eslint src",
+    "lint:demo": "eslint demo/src",
+    "lint:fix": "eslint src --fix",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "karma start"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "src"
   ],
   "dependencies": {
-    "get-form-data": "^1.2.2"
+    "get-form-data": "^1.2.3"
   },
   "peerDependencies": {
     "react": ">=0.12.0"
   },
   "devDependencies": {
-    "browserify": "^10.0.0",
-    "browserify-shim": "^3.8.6",
-    "del": "^1.1.1",
-    "gulp": "^3.8.11",
-    "gulp-header": "^1.2.2",
-    "gulp-jshint": "^1.10.0",
-    "gulp-plumber": "^1.0.0",
-    "gulp-react": "^3.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-streamify": "0.0.5",
-    "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.4",
-    "jshint-stylish": "^1.0.1",
-    "vinyl-source-stream": "^1.1.0"
-  },
-  "scripts": {
-    "debug": "gulp --debug",
-    "dist": "gulp bundle-js --production --release",
-    "watch": "gulp"
-  },
-  "browserify-shim": {
-    "react": "global:React"
+    "react": "0.14.2",
+    "react-dom": "0.14.2",
+
+    "babel": "5.8.29",
+    "babel-core": "5.8.33",
+
+    "eslint": "1.9.0",
+    "babel-eslint": "4.1.5",
+    "eslint-config-standard": "4.4.0",
+    "eslint-config-standard-react": "1.1.0",
+    "eslint-plugin-react": "3.8.0",
+    "eslint-plugin-standard": "1.3.1",
+
+    "karma": "0.13.15",
+    "codecov.io": "0.1.6",
+    "isparta-loader": "1.0.0",
+    "karma-coverage": "0.5.3",
+    "karma-phantomjs-launcher": "0.2.1",
+    "karma-sourcemap-loader": "0.3.6",
+    "karma-tap": "1.0.3",
+    "karma-webpack": "1.7.0",
+    "phantomjs": "1.9.18",
+    "phantomjs-polyfill": "0.0.1",
+    "react-addons-test-utils": "0.14.2",
+    "tape": "4.2.2",
+
+    "webpack": "1.12.3",
+    "babel-loader": "5.3.3",
+    "css-loader": "0.22.0",
+    "extract-text-webpack-plugin": "0.9.1",
+    "file-loader": "0.8.4",
+    "html-webpack-plugin": "1.6.2",
+    "json-loader": "0.5.3",
+    "style-loader": "0.13.0",
+
+    "rimraf": "2.4.3"
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/insin/react-auto-form.git"
-  }
+    "url": "https://github.com/insin/react-auto-form.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "form",
+    "forms"
+  ]
 }

@@ -1,57 +1,18 @@
-<!DOCTYPE html>
-<head>
-  <meta charset="UTF-8">
-  <title>react-auto-form</title>
-  <script src="http://fb.me/react-0.14.0.js"></script>
-  <script src="http://fb.me/react-dom-0.14.0.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser-polyfill.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
-  <script src="../dist/react-auto-form.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-  <style>
-  body {
-    font-family: 'Open Sans', sans-serif;
-    max-width: 800px;
-    padding: 1em 10px;
-    margin: 0 auto;
-  }
-  code {
-    font-size: 130%;
-  }
-  footer {
-    text-align: center;
-  }
-  hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #222;
-  }
-  p:first-child {
-    margin-top: 0;
-  }
-  .form-field {
-    margin-bottom: .66em;
-  }
-  .block {
-    display: inline-block;
-    width: 50%;
-    vertical-align: top;
-  }
-  </style>
-</head>
-<body>
-<div id="app"></div>
-<script type="text/babel">void function() { 'use strict';
+import './style.css'
+
+import React from 'react'
+import {render} from 'react-dom'
+
+import AutoForm from '../../src'
 
 if ('File' in window) {
-  File.prototype.toJSON = function() {
-    var {name, size, type} = this
+  window.File.prototype.toJSON = function() {
+    let {name, size, type} = this
     return {name, size, type}
   }
 }
 
-var App = React.createClass({
+let App = React.createClass({
   getInitialState() {
     return {
       lastOnChange: null,
@@ -75,7 +36,7 @@ var App = React.createClass({
   },
 
   render() {
-    var {lastOnChange, lastOnSubmit, trim, trimOnSubmit} = this.state
+    let {lastOnChange, lastOnSubmit, trim, trimOnSubmit} = this.state
     return <div className="App">
       <h1><a href="https://github.com/insin/react-auto-form"><code>AutoForm</code></a></h1>
       <p><strong>A <a href="(http://facebook.github.io/react/">React</a> component which simplifies getting user input from forms <code>onChange</code> and <code>onSubmit</code></strong></p>
@@ -166,7 +127,10 @@ var App = React.createClass({
   }
 })
 
-ReactDOM.render(<App/>, document.getElementById('app'))
-
-}()</script>
-</body>
+var app = document.querySelector('#app')
+if (!app) {
+  app = document.createElement('div')
+  app.id = 'app'
+  document.body.appendChild(app)
+}
+render(<App/>, app)

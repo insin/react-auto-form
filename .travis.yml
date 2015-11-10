@@ -1,3 +1,16 @@
+sudo: false
+
 language: node_js
 node_js:
-  - 0.10
+  - stable
+
+cache:
+  directories:
+    - node_modules
+
+after_success:
+  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+
+branches:
+  only:
+    - master

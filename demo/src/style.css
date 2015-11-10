@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  max-width: 800px;
+  padding: 1em 10px;
+  margin: 0 auto;
+}
+code {
+  font-size: 130%;
+}
+footer {
+  text-align: center;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #222;
+}
+p:first-child {
+  margin-top: 0;
+}
+.form-field {
+  margin-bottom: .66em;
+}
+.block {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
