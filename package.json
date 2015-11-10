@@ -1,7 +1,7 @@
 {
   "name": "react-auto-form",
   "description": "Simplifies getting user input from basic forms via onChange and onSubmit events",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "standalone": "AutoForm",
