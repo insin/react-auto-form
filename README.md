@@ -22,8 +22,8 @@ import AutoForm from 'react-auto-form'
 
 Browser bundles are available, which export a global `AutoForm` variable and expect to find a global ``React`` variable to work with.
 
-* [react-auto-form.js](https://npmcdn.com/react-auto-form/dist/react-auto-form.js) (development version)
-* [react-auto-form.min.js](https://npmcdn.com/react-auto-form/dist/react-auto-form.min.js) (compressed production version)
+* [react-auto-form.js](https://npmcdn.com/react-auto-form/umd/react-auto-form.js) (development version)
+* [react-auto-form.min.js](https://npmcdn.com/react-auto-form/umd/react-auto-form.min.js) (compressed production version)
 
 ## Usage
 
