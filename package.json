@@ -1,7 +1,7 @@
 {
   "name": "react-auto-form",
   "description": "Simplifies getting user input from basic forms via onChange and onSubmit events",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "global": "AutoForm",
@@ -20,7 +20,7 @@
     "umd"
   ],
   "dependencies": {
-    "get-form-data": "^1.2.3"
+    "get-form-data": "^1.2.4"
   },
   "peerDependencies": {
     "react": ">=0.12.0"

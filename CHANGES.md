@@ -1,3 +1,7 @@
+# 1.2.4 / 2015-11-12
+
+Changed UMD build directory.
+
 # 1.2.3 / 2015-11-10
 
 Changed how the module is published to npm.
