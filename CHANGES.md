@@ -1,3 +1,5 @@
+Added ES6 module build.
+
 # 1.2.4 / 2015-11-12
 
 Changed UMD build directory.

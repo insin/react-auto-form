@@ -1,36 +1,38 @@
 {
   "name": "react-auto-form",
-  "description": "Simplifies getting user input from basic forms via onChange and onSubmit events",
   "version": "1.2.4",
+  "description": "Simplifies getting user input from basic forms via onChange and onSubmit events",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
-  "global": "AutoForm",
-  "externals": {
-    "react": "React"
-  },
-  "homepage": "https://github.com/insin/react-auto-form",
-  "license": "MIT",
-  "author": "Jonny Buchanan <jonathan.buchanan@gmail.com>",
-  "scripts": {
-    "test": "nwb test"
-  },
   "files": [
+    "es6",
     "lib",
-    "src",
     "umd"
   ],
+  "scripts": {
+    "build": "npm run lint && nwb build",
+    "lint": "eslint src test",
+    "start": "nwb serve",
+    "test": "npm run build && nwb test"
+  },
   "dependencies": {
-    "get-form-data": "^1.2.4"
+    "get-form-data": "1.2.x"
   },
   "peerDependencies": {
     "react": ">=0.12.0"
   },
   "devDependencies": {
-    "nwb": "*",
-    "react": "0.14.2",
-    "react-addons-test-utils": "0.14.2",
-    "react-dom": "0.14.2"
+    "eslint-config-jonnybuchanan": "2.0.x",
+    "karma-tap": "1.0.3",
+    "nwb": "0.6.x",
+    "react": "0.14.x",
+    "react-addons-test-utils": "0.14.x",
+    "react-dom": "0.14.x",
+    "tape": "4.4.0"
   },
+  "author": "Jonny Buchanan <jonathan.buchanan@gmail.com>",
+  "homepage": "https://github.com/insin/react-auto-form",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/insin/react-auto-form.git"

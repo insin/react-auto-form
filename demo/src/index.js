@@ -127,10 +127,4 @@ let App = React.createClass({
   }
 })
 
-var app = document.querySelector('#app')
-if (!app) {
-  app = document.createElement('div')
-  app.id = 'app'
-  document.body.appendChild(app)
-}
-render(<App/>, app)
+render(<App/>, document.querySelector('#demo'))
