@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "build": "npm run lint && nwb build",
-    "lint": "eslint src test",
+    "lint": "eslint demo/src src tests",
+    "lint:fix": "eslint demo/src src tests --fix",
     "start": "nwb serve",
     "test": "npm run build && nwb test",
     "test:watch": "nwb test --server"

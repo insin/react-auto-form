@@ -60,7 +60,7 @@ let App = React.createClass({
               <option value="3">Shoes</option>
             </select>
           </div>
-         <div className="form-field">
+          <div className="form-field">
             <label htmlFor="colours">Colours:</label><br/>
             <select name="colours" id="colours" multiple size="3" defaultValue={['G']}>
               <option value="R">Red</option>
