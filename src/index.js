@@ -1,18 +1,20 @@
 import getFormData, {getNamedFormElementData as getFieldData} from 'get-form-data'
-import React from 'react'
+import React, {PropTypes as t} from 'react'
 
 let AutoForm = React.createClass({
   propTypes: {
-    onChange: React.PropTypes.func,
-    onSubmit: React.PropTypes.func,
-    trim: React.PropTypes.bool,
-    trimOnSubmit: React.PropTypes.bool
+    component: t.any,
+    onChange: t.func,
+    onSubmit: t.func,
+    trim: t.bool,
+    trimOnSubmit: t.bool,
   },
 
   getDefaultProps() {
     return {
+      component: 'form',
       trim: false,
-      trimOnSubmit: false
+      trimOnSubmit: false,
     }
   },
 
@@ -30,13 +32,17 @@ let AutoForm = React.createClass({
   },
 
   render() {
-    return React.createElement('form', {
-      ...this.props,
-      ...{
-        onChange: this.props.onChange && this._onChange,
-        onSubmit: this.props.onSubmit && this._onSubmit
-      }
-    }, this.props.children)
+    let {
+      children, component: Component, onChange, onSubmit,
+      trim, trimOnSubmit, // eslint-disable-line no-unused-vars
+      ...props,
+    } = this.props
+    return <Component
+      {...props}
+      children={children}
+      onChange={onChange && this._onChange}
+      onSubmit={onSubmit && this._onSubmit}
+    />
   }
 })
 

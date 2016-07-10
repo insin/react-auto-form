@@ -26,9 +26,9 @@
   "devDependencies": {
     "eslint-config-jonnybuchanan": "3.2.1",
     "nwb": "0.11.0",
-    "react": "0.14.x",
-    "react-addons-test-utils": "0.14.x",
-    "react-dom": "0.14.x"
+    "react": "15.2.1",
+    "react-addons-test-utils": "15.2.1",
+    "react-dom": "15.2.1"
   },
   "author": "Jonny Buchanan <jonathan.buchanan@gmail.com>",
   "homepage": "https://github.com/insin/react-auto-form",

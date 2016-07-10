@@ -15,9 +15,9 @@ npm install react-auto-form
 ```
 
 ```javascript
-var AutoForm = require('react-auto-form')
-// or
 import AutoForm from 'react-auto-form'
+// or
+var AutoForm = require('react-auto-form')
 ```
 
 Browser bundles are available, which export a global `AutoForm` variable and expect to find a global ``React`` variable to work with.
@@ -51,44 +51,31 @@ var ExampleForm = React.createClass({
 
 ### `AutoForm` component
 
-This component configures a `<form>` for convenient handling of input data
-changes as they happen and extraction of submittable form data.
+This component handle bubbling `onChange` events for convenient handling of input data changes as they happen and extraction of submittable form data.
 
-It saves you from having to manually configure an `onChange` handler for each
-individual form input and from having to manually extract data from form inputs.
+It saves you from having to manually configure an `onChange` handler for each individual form input and from having to manually extract data from form inputs.
 
-In order to do this, it expects form inputs contained within it to have `name`
-attributes set up as you would for any form which will be used for regular form
-submission.
+In order to do this, it expects form inputs contained within it to have `name` attributes set up as you would for any form which will be used for regular form submission.
 
-Multiple inputs with the same `name` are supported - their extracted data will
-always be contained in an `Array` when they have some submittable data, with the
-exception of a group of radio buttons all having the same name, which will
-return the selected value only.
+Multiple inputs with the same `name` are supported - their extracted data will always be contained in an `Array` when they have some submittable data, with the exception of a group of radio buttons all having the same name, which will return the selected value only.
 
-The data extracted from form inputs and the form as a whole is in line with
-data which would be submitted for the form's current state via a regular form
-submission - this makes it suitable for use in isomorphic apps which configure
-a form for regular submission and progressively enhance form-handling when
-JavaScript runs on the client.
+The data extracted from form inputs and the form as a whole is in line with data which would be submitted for the form's current state via a regular form submission - this makes it suitable for use in isomorphic apps which configure a form for regular submission and progressively enhance form-handling when JavaScript runs on the client.
 
-Where available, data extracted from file inputs will be native
-[`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) objects.
+Where available, data extracted from file inputs will be native [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) objects.
 
 #### `AutoForm` props
 
-You can pass all the usual form attributes to `AutoForm` (`action`, `method`,
-`encType`, `noValidate` etc.), and they will be passed on to the `<form>` it
-renders for you.
+You can pass all the usual form attributes to `AutoForm` (`action`, `method`, `encType`, `noValidate` etc.), and they will be passed on to the `<form>` it renders for you by default.
 
 The following props are treated specially:
 
+##### `component`
+
+The component which will be rendered by AutoForm - defaults to `'form'`.
+
 ##### `onChange: Function(event, name, data, change)`
 
-If this prop is given, AutoForm will configure the form with an `onChange`
-handler which will handle `onChange` events from any inputs contained within
-the form, extract data for the form element which triggered the event and
-call the given `onChange` function with the following arguments:
+If this prop is given, AutoForm will configure the form with an `onChange` handler which will handle `onChange` events from any inputs contained within the form, extract data for the form element which triggered the event and call the given `onChange` function with the following arguments:
 
 1. `event: `[`SyntheticEvent`](http://facebook.github.io/react/docs/events.html#syntheticevent) - the event being handled.
 
@@ -96,8 +83,7 @@ call the given `onChange` function with the following arguments:
 
 3. `data: (null|String|Array.<String>|File|Array.<File>)` - submittable data for the form element which changed.
 
-   This value will be as documented for the get-form-data module's
-   [`getNamedFormElementData()` return value](https://github.com/insin/get-form-data#return-type-nullstringarraystring).
+   This value will be as documented for the get-form-data module's [`getNamedFormElementData()` return value](https://github.com/insin/get-form-data#return-type-nullstringarraystring).
 
    The TL;DR for that is:
 

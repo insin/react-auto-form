@@ -7,9 +7,9 @@ import AutoForm from 'src/index'
 
 const {change, submit} = Simulate
 
-let renderForm = (FormComponent, cb) => {
+let renderForm = (FormComponent, cb, query = 'form') => {
   let node = document.createElement('div')
-  render(<FormComponent/>, node, () => cb(node.querySelector('form')))
+  render(<FormComponent/>, node, () => cb(node.querySelector(query)))
 }
 
 let FormWrapper = (props = {}) => () =>
@@ -21,7 +21,16 @@ let FormWrapper = (props = {}) => () =>
   </AutoForm>
 
 describe('AutoForm component', () => {
-  it('renders a form nd passes through props', done => {
+  let errorLogSpy
+  beforeEach(() => {
+    errorLogSpy = expect.spyOn(console, 'error')
+  })
+  afterEach(() => {
+    expect(errorLogSpy).toNotHaveBeenCalled()
+    errorLogSpy.restore()
+  })
+
+  it('renders a form and passes through props', done => {
     renderForm(
       () => <AutoForm action="/add-thing" method="POST" name="test-form"/>,
       form => {
@@ -63,6 +72,19 @@ describe('AutoForm component', () => {
         },
       }),
       form => change(form.querySelector('input[name=name]'))
+    )
+  })
+
+  it('component prop provides component to be rendered', done => {
+    renderForm(
+      FormWrapper({
+        component: 'div',
+      }),
+      div => {
+        expect(div).toExist()
+        done()
+      },
+      'div'
     )
   })
 
