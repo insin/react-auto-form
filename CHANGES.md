@@ -1,6 +1,8 @@
+# 1.3.0 / 2016-07-10
+
 Added a `component` prop to specify the component rendered by `AutoForm`, defaulting to `'form'`.
 
-Fixed unknown props warning with React 15.2.0.
+Fixed unknown props warning with React 15.2.x.
 
 # 1.2.5 / 2016-01-02
 
