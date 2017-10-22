@@ -1,41 +1,39 @@
 import './style.css'
 
-import React from 'react'
+import React, {Component} from 'react'
 import {render} from 'react-dom'
 
 import AutoForm from '../../src'
 
 if ('File' in window) {
-  window.File.prototype.toJSON = function() {
+  window.File.prototype.toJSON = function () {
     let {name, size, type} = this
     return {name, size, type}
   }
 }
 
-let App = React.createClass({
-  getInitialState() {
-    return {
-      lastOnChange: null,
-      lastOnSubmit: null,
-      trim: true,
-      trimOnSubmit: false
-    }
-  },
+class App extends Component {
+  state = {
+    lastOnChange: null,
+    lastOnSubmit: null,
+    trim: true,
+    trimOnSubmit: false
+  }
 
-  _onChange(e, name, data, change) {
+  _onChange = (e, name, data, change) => {
     this.setState({lastOnChange: {name, data, change}})
-  },
+  }
 
-  _onSubmit(e, data) {
+  _onSubmit = (e, data) => {
     this.setState({lastOnSubmit: {data}})
     e.preventDefault()
-  },
+  }
 
-  _onOptionsChange(e, name, data, change) {
+  _onOptionsChange = (e, name, data, change) => {
     this.setState(change)
-  },
+  }
 
-  render() {
+  render () {
     let {lastOnChange, lastOnSubmit, trim, trimOnSubmit} = this.state
     return <div className="App">
       <h1><a href="https://github.com/insin/react-auto-form"><code>AutoForm</code></a></h1>
@@ -113,8 +111,8 @@ let App = React.createClass({
       </div>
       <div className="block">
         <AutoForm onChange={this._onOptionsChange}>
-          <p><label><input type="checkbox" name="trim" checked={!!trim}/> Always trim text input</label></p>
-          <p><label><input type="checkbox" name="trimOnSubmit" checked={!!trimOnSubmit}/> Trim text input <code>onSubmit</code></label></p>
+          <p><label><input type="checkbox" name="trim" defaultChecked={!!trim}/> Always trim text input</label></p>
+          <p><label><input type="checkbox" name="trimOnSubmit" defaultChecked={!!trimOnSubmit}/> Trim text input <code>onSubmit</code></label></p>
         </AutoForm>
         <p>Last <code>onChange</code> arguments:</p>
         <pre><code>{lastOnChange ? JSON.stringify(lastOnChange, null, 2) : ' '}</code></pre>
@@ -125,6 +123,6 @@ let App = React.createClass({
       <footer><a href="https://github.com/insin/react-auto-form">Source on GitHub</a></footer>
     </div>
   }
-})
+}
 
-render(<App/>, document.querySelector('#demo'))
+render(<App />, document.querySelector('#demo'))
