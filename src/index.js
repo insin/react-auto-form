@@ -1,35 +1,34 @@
 import getFormData, {getNamedFormElementData as getFieldData} from 'get-form-data'
-import React, {PropTypes as t} from 'react'
+import t from 'prop-types'
+import React from 'react'
 
-let AutoForm = React.createClass({
-  propTypes: {
+export default class AutoForm extends React.Component {
+  static propTypes = {
     component: t.any,
     onChange: t.func,
     onSubmit: t.func,
     trim: t.bool,
     trimOnSubmit: t.bool,
-  },
+  }
 
-  getDefaultProps() {
-    return {
-      component: 'form',
-      trim: false,
-      trimOnSubmit: false,
-    }
-  },
+  static defaultProps = {
+    component: 'form',
+    trim: false,
+    trimOnSubmit: false,
+  }
 
-  _onChange(e) {
+  _onChange = (e) => {
     let {form, name} = e.target
     let data = getFieldData(form, name, {trim: this.props.trim})
     let change = {}
     change[name] = data
     this.props.onChange(e, name, data, change)
-  },
+  }
 
-  _onSubmit(e) {
+  _onSubmit = (e) => {
     let data = getFormData(e.target, {trim: this.props.trimOnSubmit || this.props.trim})
     this.props.onSubmit(e, data)
-  },
+  }
 
   render() {
     let {
@@ -44,6 +43,4 @@ let AutoForm = React.createClass({
       onSubmit={onSubmit && this._onSubmit}
     />
   }
-})
-
-export default AutoForm
+}

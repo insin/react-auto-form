@@ -12,28 +12,26 @@ if ('File' in window) {
   }
 }
 
-let App = React.createClass({
-  getInitialState() {
-    return {
-      lastOnChange: null,
-      lastOnSubmit: null,
-      trim: true,
-      trimOnSubmit: false
-    }
-  },
+class App extends React.Component {
+  state = {
+    lastOnChange: null,
+    lastOnSubmit: null,
+    trim: true,
+    trimOnSubmit: false
+  }
 
-  _onChange(e, name, data, change) {
+  _onChange = (e, name, data, change) => {
     this.setState({lastOnChange: {name, data, change}})
-  },
+  }
 
-  _onSubmit(e, data) {
+  _onSubmit = (e, data) => {
     this.setState({lastOnSubmit: {data}})
     e.preventDefault()
-  },
+  }
 
-  _onOptionsChange(e, name, data, change) {
+  _onOptionsChange = (e, name, data, change) => {
     this.setState(change)
-  },
+  }
 
   render() {
     let {lastOnChange, lastOnSubmit, trim, trimOnSubmit} = this.state
@@ -125,6 +123,6 @@ let App = React.createClass({
       <footer><a href="https://github.com/insin/react-auto-form">Source on GitHub</a></footer>
     </div>
   }
-})
+}
 
 render(<App/>, document.querySelector('#demo'))

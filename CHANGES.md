@@ -1,3 +1,5 @@
+Added React 16 support.
+
 # 1.3.0 / 2016-07-10
 
 Added a `component` prop to specify the component rendered by `AutoForm`, defaulting to `'form'`.

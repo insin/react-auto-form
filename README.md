@@ -22,36 +22,36 @@ var AutoForm = require('react-auto-form')
 
 Browser bundles are available, which export a global `AutoForm` variable and expect to find a global ``React`` variable to work with.
 
-* [react-auto-form.js](https://npmcdn.com/react-auto-form/umd/react-auto-form.js) (development version)
-* [react-auto-form.min.js](https://npmcdn.com/react-auto-form/umd/react-auto-form.min.js) (compressed production version)
+* [react-auto-form.js](https://unpkg.com/react-auto-form/umd/react-auto-form.js) (development version)
+* [react-auto-form.min.js](https://unpkg.com/react-auto-form/umd/react-auto-form.min.js) (compressed production version)
 
 ## Usage
 
 The following React component skeleton shows usage of `AutoForm` to handle getting input `onChange` and `onSubmit`, plus the argument signatures it expects event callbacks to have:
 
 ```javascript
-var ExampleForm = React.createClass({
-  _onChange(event, name, data, change) {
+class ExampleForm extends React.Component {
+  _onChange = (event, name, data, change) => {
     // ...
-  },
+  }
 
-  _onSubmit(event, data) {
+  _onSubmit = (event, data) => {
     // ...
-  },
+  }
 
   render() {
     return <AutoForm onChange={this._onChange} onSubmit={this._onSubmit} trimOnSubmit>
       {/* ...form inputs... */}
     </AutoForm>
   }
-})
+}
 ```
 
 ## API
 
 ### `AutoForm` component
 
-This component handle bubbling `onChange` events for convenient handling of input data changes as they happen and extraction of submittable form data.
+This component handles bubbling `onChange` events for convenient handling of input data changes as they happen and extraction of submittable form data.
 
 It saves you from having to manually configure an `onChange` handler for each individual form input and from having to manually extract data from form inputs.
 
