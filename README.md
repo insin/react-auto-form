@@ -4,7 +4,7 @@
 [![Codecov][coverage-badge]][coverage]
 [![npm package][npm-badge]][npm]
 
-An `<AutoForm>` [React](http://facebook.github.io/react/) component, which simplifies getting data from its contained form inputs via their `onChange` events and the form's `onSubmit` event, optionally trimming text input.
+An `<AutoForm>` [React](https://reactjs.org) component, which simplifies getting data from its contained form inputs via their `onChange` events and the form's `onSubmit` event, optionally trimming text input.
 
 ## [Live Demo](http://insin.github.io/react-auto-form/)
 
@@ -77,7 +77,7 @@ The component which will be rendered by AutoForm - defaults to `'form'`.
 
 If this prop is given, AutoForm will configure the form with an `onChange` handler which will handle `onChange` events from any inputs contained within the form, extract data for the form element which triggered the event and call the given `onChange` function with the following arguments:
 
-1. `event: `[`SyntheticEvent`](http://facebook.github.io/react/docs/events.html#syntheticevent) - the event being handled.
+1. `event: `[`SyntheticEvent`](https://reactjs.org/docs/events.html#syntheticevent) - the event being handled.
 
 2. `name: String` - the name of the form element which was the target of the event.
 
@@ -91,13 +91,13 @@ If this prop is given, AutoForm will configure the form with an `onChange` handl
    * `data` for any other type of input which doesn't have a submittable value will be `null`.
    * `data` for an `<input type="file">` will be a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) if the browser supports the File API. If the input has a `multiple` attribute, `data` will be a list of Files when any are selected.
 
-4. `change: Object<String, (null|String|Array.<String>|File|Array.<File>)>` - an object containing `{[name]: data}`, for convenience if you're using [controlled form components](http://facebook.github.io/react/docs/forms.html#controlled-components) and need to call `setState()` on every change.
+4. `change: Object<String, (null|String|Array.<String>|File|Array.<File>)>` - an object containing `{[name]: data}`, for convenience if you're using [controlled form components](https://reactjs.org/docs/forms.html#controlled-components) and need to call `setState()` on every change.
 
 ##### `onSubmit: Function(event, data)`
 
 If this prop is given, `AutoForm` will configure the form with an `onSubmit` handler which will handle the form's `onSubmit` event, extract submittable data for the form's elements and call the given `onChange` function with the following arguments:
 
-1. `event: `[`SyntheticEvent`](http://facebook.github.io/react/docs/events.html#syntheticevent) - the event being handled.
+1. `event: `[`SyntheticEvent`](https://reactjs.org/docs/events.html#syntheticevent) - the event being handled.
 
 2. `data: Object<String, (String|Array.<String>|File|Array.<File>)>` - submittable data for the form.
 
