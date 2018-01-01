@@ -1,6 +1,6 @@
 {
   "name": "react-auto-form",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "Simplifies getting user input from basic forms via onChange and onSubmit events",
   "main": "lib/index.js",
   "module": "es/index.js",
