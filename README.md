@@ -6,7 +6,7 @@
 
 An `<AutoForm>` [React](https://reactjs.org) component, which simplifies getting data from its contained form inputs via their `onChange` events and the form's `onSubmit` event, optionally trimming text input.
 
-## [Live Demo](http://insin.github.io/react-auto-form/)
+## [Live Demo](https://insin.github.io/react-auto-form/)
 
 ## Install
 
@@ -83,7 +83,7 @@ If this prop is given, AutoForm will configure the form with an `onChange` handl
 
 3. `data: (null|String|Array.<String>|File|Array.<File>)` - submittable data for the form element which changed.
 
-   This value will be as documented for the get-form-data module's [`getNamedFormElementData()` return value](https://github.com/insin/get-form-data#return-type-nullstringarraystring).
+   This value will be as documented for the get-form-data module's [`getNamedFormElementData()` return value](https://github.com/insin/get-form-data#return-type-objectstring-stringarraystringfilearrayfile).
 
    The TL;DR for that is:
 
