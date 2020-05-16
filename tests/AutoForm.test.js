@@ -16,7 +16,7 @@ let FormWrapper = (props = {}) => () =>
   <AutoForm action="/submit" method="POST" {...props}>
     <input type="text" name="name" defaultValue="AzureDiamond  "/>
     <input type="password" name="password" defaultValue="hunter2"/>
-    <input type="checkbox" name="accepted" value="accepted" defaultChecked/>
+    <input type="checkbox" name="accepted" defaultChecked/>
     <button type="submit">Submit</button>
   </AutoForm>
 
@@ -51,7 +51,7 @@ describe('AutoForm component', () => {
           expect(data).toEqual({
             name: 'AzureDiamond  ',
             password: 'hunter2',
-            accepted: 'accepted',
+            accepted: true,
           })
           done()
         },

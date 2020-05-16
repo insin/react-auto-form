@@ -1,3 +1,5 @@
+Breaking change: updated to get-form-data@3 - checkbox inputs without a `value` will now return `true` as their value when checked, instead of `'on'`.
+
 # 2.0.0 / 2018-01-01
 
 Added React 16 support.

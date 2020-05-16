@@ -1,4 +1,4 @@
-import getFormData, {getNamedFormElementData as getFieldData} from 'get-form-data'
+import getFormData, {getFieldData} from 'get-form-data'
 import t from 'prop-types'
 import React from 'react'
 
@@ -34,7 +34,7 @@ export default class AutoForm extends React.Component {
     let {
       children, component: Component, onChange, onSubmit,
       trim, trimOnSubmit, // eslint-disable-line no-unused-vars
-      ...props,
+      ...props
     } = this.props
     return <Component
       {...props}

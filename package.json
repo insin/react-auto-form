@@ -18,15 +18,15 @@
     "test:watch": "nwb test --server"
   },
   "dependencies": {
-    "get-form-data": "1.2.x",
+    "get-form-data": "3.0.x",
     "prop-types": "^15.5.7"
   },
   "peerDependencies": {
     "react": ">=0.14.9"
   },
   "devDependencies": {
-    "eslint-config-jonnybuchanan": "5.0.x",
-    "nwb": "0.20.x",
+    "eslint-config-jonnybuchanan": "6.0.x",
+    "nwb": "0.24.x",
     "react": "16.x",
     "react-dom": "16.x"
   },
