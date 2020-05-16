@@ -103,8 +103,19 @@ class App extends React.Component {
           </div>
           <div className="form-field">
             <label>
-              <input type="checkbox" name="tos" value="Y" defaultChecked/> I have read and agree to the <a href="#">Terms of Service</a>
+              <input type="checkbox" name="tos1" value="Y" defaultChecked/> I have read and agree to the <a href="#">Terms of Service</a>
             </label>
+            <div>
+              (<code>value="Y"</code>)
+            </div>
+          </div>
+          <div className="form-field">
+            <label>
+              <input type="checkbox" name="tos2" defaultChecked/> I really, really agree to the <a href="#">Terms of Service</a>
+            </label>
+            <div>
+              (no <code>value</code>)
+            </div>
           </div>
           <button>Submit</button>
         </AutoForm>
