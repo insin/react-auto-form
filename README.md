@@ -79,19 +79,20 @@ If this prop is given, AutoForm will configure the form with an `onChange` handl
 
 1. `event: `[`SyntheticEvent`](https://reactjs.org/docs/events.html#syntheticevent) - the event being handled.
 
-2. `name: String` - the name of the form element which was the target of the event.
+2. `name: string` - the name of the form element which was the target of the event.
 
-3. `data: (null|String|Array.<String>|File|Array.<File>)` - submittable data for the form element which changed.
+3. `data: null|boolean|string|string[]|File|File[]` - submittable data for the form element which changed.
 
-   This value will be as documented for the get-form-data module's [`getNamedFormElementData()` return value](https://github.com/insin/get-form-data#return-type-objectstring-stringarraystringfilearrayfile).
+   This value will be as documented for the get-form-data module's [`getFieldData()` return value](https://github.com/insin/get-form-data#getfielddataform-htmlformelement-fieldname-string-options-object).
 
    The TL;DR for that is:
 
-   * `data` for an empty text input will be an empty string (`''`).
+   * `data` for an empty text input will be an empty String (`''`).
    * `data` for any other type of input which doesn't have a submittable value will be `null`.
+   * `data` for a single checkbox input which is checked and doesn't have a `value` will be `true`.
    * `data` for an `<input type="file">` will be a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) if the browser supports the File API. If the input has a `multiple` attribute, `data` will be a list of Files when any are selected.
 
-4. `change: Object<String, (null|String|Array.<String>|File|Array.<File>)>` - an object containing `{[name]: data}`, for convenience if you're using [controlled form components](https://reactjs.org/docs/forms.html#controlled-components) and need to call `setState()` on every change.
+4. `change: Object.<string,null|boolean|string|string[]|File|File[]>` - an object containing `{[name]: data}`, for convenience if you're using [controlled form components](https://reactjs.org/docs/forms.html#controlled-components) and need to call `setState()` on every change.
 
 ##### `onSubmit: Function(event, data)`
 
@@ -99,21 +100,21 @@ If this prop is given, `AutoForm` will configure the form with an `onSubmit` han
 
 1. `event: `[`SyntheticEvent`](https://reactjs.org/docs/events.html#syntheticevent) - the event being handled.
 
-2. `data: Object<String, (String|Array.<String>|File|Array.<File>)>` - submittable data for the form.
+2. `data: Object.<string,null|boolean|string|string[]|File|File[]>` - submittable data for the form.
 
-   The properties of this object will be as documented for the get-form-data module's [`getFormData()` return value](https://github.com/insin/get-form-data#return-type-objectstring-stringarraystring).
+   The properties of this object will be as documented for the [get-form-data](https://github.com/insin/get-form-data#get-form-data) module's [`getFormData()` return value](https://github.com/insin/get-form-data#return-type-objectstring-stringarraystring).
 
-##### `trimOnSubmit: Boolean` (default: `false`)
+##### `trimOnSubmit: boolean` (default: `false`)
 
 If `true`, user input from text inputs will be trimmed of leading and trailing whitespace only when it is being extracted after an `onSubmit` event.
 
-##### `trim: Boolean` (default: `false`)
+##### `trim: boolean` (default: `false`)
 
 If `true`, user input from text inputs will always be trimmed of leading and trailing whitespace when it is being extracted.
 
 When `true`, this prop takes precedence over `trimOnSubmit`.
 
-**Note:** It's not advisable to use the `trim` prop in conjunction with `onChange` and controlled input components, as the user will be completely disallowed from entering a leading or trailing space, so they won't be able to enter information containing spaces without copying and pasting it. Just use `trimOnSubmit` instead in this case.
+**Note:** It's *not* advisable to use the `trim` prop in conjunction with `onChange` and controlled input components, as the user will be completely disallowed from entering a leading or trailing space, so they won't be able to enter information containing spaces without copying and pasting it. Just use `trimOnSubmit` instead in this case.
 
 ## MIT Licensed
 
